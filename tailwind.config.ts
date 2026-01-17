@@ -15,12 +15,17 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
       },
       fontSize: {
-        'display': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }],
-        'title': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'display-xl': ['4rem', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'display': ['3rem', { lineHeight: '1.15', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'title': ['2rem', { lineHeight: '1.25', fontWeight: '600', letterSpacing: '-0.01em' }],
+        'subtitle': ['1.5rem', { lineHeight: '1.35', fontWeight: '500' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.7', fontWeight: '400' }],
         'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
         'form': ['0.9375rem', { lineHeight: '1.5', fontWeight: '500' }],
+        'caption': ['0.875rem', { lineHeight: '1.5', fontWeight: '500' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -82,7 +87,13 @@ export default {
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
+        'glass': 'var(--shadow-glass)',
         'elevated': '0 0 0 1px rgb(0 0 0 / 0.03), 0 2px 4px rgb(0 0 0 / 0.03), 0 12px 24px rgb(0 0 0 / 0.03)',
+        'glow': '0 0 60px rgba(59, 130, 246, 0.15)',
+        'glow-sm': '0 0 30px rgba(59, 130, 246, 0.1)',
+      },
+      backdropBlur: {
+        'glass': '20px',
       },
       keyframes: {
         "accordion-down": {
