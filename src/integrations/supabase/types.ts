@@ -14,16 +14,259 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      campaign_applications: {
+        Row: {
+          campaign_id: string
+          created_at: string
+          creator_id: string
+          id: string
+          message: string | null
+          proposed_price: number | null
+          status: string | null
+          tiktok_video_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          campaign_id: string
+          created_at?: string
+          creator_id: string
+          id?: string
+          message?: string | null
+          proposed_price?: number | null
+          status?: string | null
+          tiktok_video_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          campaign_id?: string
+          created_at?: string
+          creator_id?: string
+          id?: string
+          message?: string | null
+          proposed_price?: number | null
+          status?: string | null
+          tiktok_video_url?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "campaign_applications_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      campaigns: {
+        Row: {
+          budget: number
+          created_at: string
+          currency: string | null
+          deadline: string | null
+          description: string | null
+          id: string
+          product_category: string | null
+          product_image_url: string | null
+          product_name: string
+          requirements: string | null
+          seller_id: string
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          budget: number
+          created_at?: string
+          currency?: string | null
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          product_category?: string | null
+          product_image_url?: string | null
+          product_name: string
+          requirements?: string | null
+          seller_id: string
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          budget?: number
+          created_at?: string
+          currency?: string | null
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          product_category?: string | null
+          product_image_url?: string | null
+          product_name?: string
+          requirements?: string | null
+          seller_id?: string
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          rating_avg: number | null
+          rating_count: number | null
+          tiktok_avg_views: number | null
+          tiktok_followers: number | null
+          tiktok_username: string | null
+          total_earned: number | null
+          total_spent: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          rating_avg?: number | null
+          rating_count?: number | null
+          tiktok_avg_views?: number | null
+          tiktok_followers?: number | null
+          tiktok_username?: string | null
+          total_earned?: number | null
+          total_spent?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          rating_avg?: number | null
+          rating_count?: number | null
+          tiktok_avg_views?: number | null
+          tiktok_followers?: number | null
+          tiktok_username?: string | null
+          total_earned?: number | null
+          total_spent?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ratings: {
+        Row: {
+          campaign_id: string
+          comment: string | null
+          created_at: string
+          from_user_id: string
+          id: string
+          rating: number
+          to_user_id: string
+        }
+        Insert: {
+          campaign_id: string
+          comment?: string | null
+          created_at?: string
+          from_user_id: string
+          id?: string
+          rating: number
+          to_user_id: string
+        }
+        Update: {
+          campaign_id?: string
+          comment?: string | null
+          created_at?: string
+          from_user_id?: string
+          id?: string
+          rating?: number
+          to_user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ratings_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wallets: {
+        Row: {
+          available_balance: number | null
+          created_at: string
+          currency: string | null
+          id: string
+          locked_balance: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          available_balance?: number | null
+          created_at?: string
+          currency?: string | null
+          id?: string
+          locked_balance?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          available_balance?: number | null
+          created_at?: string
+          currency?: string | null
+          id?: string
+          locked_balance?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "seller" | "creator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +393,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["seller", "creator"],
+    },
   },
 } as const

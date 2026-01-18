@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Zap, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -56,12 +57,17 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="text-foreground">
-              Connexion
-            </Button>
-            <Button size="sm" className="shadow-glow-sm">
-              Commencer
-            </Button>
+            <ThemeToggle />
+            <Link to="/auth">
+              <Button variant="ghost" size="sm" className="text-foreground">
+                Connexion
+              </Button>
+            </Link>
+            <Link to="/auth">
+              <Button size="sm" className="shadow-glow-sm">
+                Commencer
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
