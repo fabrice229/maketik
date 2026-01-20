@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Zap, Menu, X } from "lucide-react";
+import { Zap, Menu, X, Store, Video } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Header = () => {
@@ -58,14 +58,16 @@ const Header = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
-            <Link to="/auth">
-              <Button variant="ghost" size="sm" className="text-foreground">
-                Connexion
+            <Link to="/auth/seller">
+              <Button variant="ghost" size="sm" className="text-foreground hover:text-seller">
+                <Store className="w-4 h-4 mr-2" />
+                Vendeur
               </Button>
             </Link>
-            <Link to="/auth">
-              <Button size="sm" className="shadow-glow-sm">
-                Commencer
+            <Link to="/auth/creator">
+              <Button size="sm" className="bg-creator hover:bg-creator/90 shadow-lg">
+                <Video className="w-4 h-4 mr-2" />
+                Créateur
               </Button>
             </Link>
           </div>
@@ -109,12 +111,18 @@ const Header = () => {
                 Tarifs
               </Link>
               <div className="flex gap-3 mt-4">
-                <Button variant="outline" className="flex-1 glass">
-                  Connexion
-                </Button>
-                <Button className="flex-1 shadow-glow-sm">
-                  Commencer
-                </Button>
+                <Link to="/auth/seller" className="flex-1">
+                  <Button variant="outline" className="w-full glass">
+                    <Store className="w-4 h-4 mr-2" />
+                    Vendeur
+                  </Button>
+                </Link>
+                <Link to="/auth/creator" className="flex-1">
+                  <Button className="w-full bg-creator hover:bg-creator/90">
+                    <Video className="w-4 h-4 mr-2" />
+                    Créateur
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
