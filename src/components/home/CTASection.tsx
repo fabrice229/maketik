@@ -36,17 +36,23 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 size="xl" 
-                className="w-full sm:w-auto bg-white text-primary hover:bg-white/95 hover:scale-[1.02] active:scale-[0.98] shadow-xl transition-all duration-300"
+                className="w-full sm:w-auto bg-white text-seller hover:bg-white/95 hover:scale-[1.02] active:scale-[0.98] shadow-xl transition-all duration-300"
+                asChild
               >
-                Créer mon compte vendeur
-                <ArrowRight className="w-5 h-5" />
+                <a href="/auth/seller">
+                  Créer mon compte vendeur
+                  <ArrowRight className="w-5 h-5" />
+                </a>
               </Button>
               <Button 
                 size="xl" 
                 variant="ghost"
                 className="w-full sm:w-auto text-white border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm"
+                asChild
               >
-                S'inscrire comme créateur
+                <a href="/auth/creator">
+                  S'inscrire comme créateur
+                </a>
               </Button>
             </div>
           </div>

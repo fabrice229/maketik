@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
+import AuthSeller from "./pages/AuthSeller";
+import AuthCreator from "./pages/AuthCreator";
 import SellerDashboard from "./pages/SellerDashboard";
 import Campaigns from "./pages/Campaigns";
 import NewCampaign from "./pages/NewCampaign";
@@ -27,7 +28,8 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
+              <Route path="/auth/seller" element={<AuthSeller />} />
+              <Route path="/auth/creator" element={<AuthCreator />} />
               <Route path="/dashboard/seller" element={<SellerDashboard />} />
               <Route path="/campaigns" element={<Campaigns />} />
               <Route path="/campaigns/new" element={<NewCampaign />} />
