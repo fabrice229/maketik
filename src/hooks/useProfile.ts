@@ -9,13 +9,28 @@ export interface Profile {
   phone: string | null;
   avatar_url: string | null;
   bio: string | null;
+  country: string | null;
   tiktok_username: string | null;
   tiktok_followers: number;
   tiktok_avg_views: number;
+  instagram_username: string | null;
+  instagram_followers: number;
+  youtube_username: string | null;
+  youtube_subscribers: number;
+  twitter_username: string | null;
+  twitter_followers: number;
+  facebook_username: string | null;
+  facebook_followers: number;
   total_earned: number;
   total_spent: number;
   rating_avg: number;
   rating_count: number;
+  missions_completed: number;
+  missions_won: number;
+  is_verified: boolean;
+  base_price: number;
+  company_name: string | null;
+  company_type: string | null;
   created_at: string;
   updated_at: string;
 }

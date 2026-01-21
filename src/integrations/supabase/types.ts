@@ -109,13 +109,116 @@ export type Database = {
         }
         Relationships: []
       }
+      conversations: {
+        Row: {
+          application_id: string | null
+          campaign_id: string | null
+          created_at: string
+          creator_id: string
+          current_price: number
+          id: string
+          seller_id: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          application_id?: string | null
+          campaign_id?: string | null
+          created_at?: string
+          creator_id: string
+          current_price?: number
+          id?: string
+          seller_id: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          application_id?: string | null
+          campaign_id?: string | null
+          created_at?: string
+          creator_id?: string
+          current_price?: number
+          id?: string
+          seller_id?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "campaign_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string
+          id: string
+          is_read: boolean | null
+          message_type: string | null
+          price_change: number | null
+          sender_id: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message_type?: string | null
+          price_change?: number | null
+          sender_id: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message_type?: string | null
+          price_change?: number | null
+          sender_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
+          base_price: number | null
           bio: string | null
+          company_name: string | null
+          company_type: string | null
+          country: string | null
           created_at: string
+          facebook_followers: number | null
+          facebook_username: string | null
           full_name: string | null
           id: string
+          instagram_followers: number | null
+          instagram_username: string | null
+          is_verified: boolean | null
+          missions_completed: number | null
+          missions_won: number | null
           phone: string | null
           rating_avg: number | null
           rating_count: number | null
@@ -124,15 +227,30 @@ export type Database = {
           tiktok_username: string | null
           total_earned: number | null
           total_spent: number | null
+          twitter_followers: number | null
+          twitter_username: string | null
           updated_at: string
           user_id: string
+          youtube_subscribers: number | null
+          youtube_username: string | null
         }
         Insert: {
           avatar_url?: string | null
+          base_price?: number | null
           bio?: string | null
+          company_name?: string | null
+          company_type?: string | null
+          country?: string | null
           created_at?: string
+          facebook_followers?: number | null
+          facebook_username?: string | null
           full_name?: string | null
           id?: string
+          instagram_followers?: number | null
+          instagram_username?: string | null
+          is_verified?: boolean | null
+          missions_completed?: number | null
+          missions_won?: number | null
           phone?: string | null
           rating_avg?: number | null
           rating_count?: number | null
@@ -141,15 +259,30 @@ export type Database = {
           tiktok_username?: string | null
           total_earned?: number | null
           total_spent?: number | null
+          twitter_followers?: number | null
+          twitter_username?: string | null
           updated_at?: string
           user_id: string
+          youtube_subscribers?: number | null
+          youtube_username?: string | null
         }
         Update: {
           avatar_url?: string | null
+          base_price?: number | null
           bio?: string | null
+          company_name?: string | null
+          company_type?: string | null
+          country?: string | null
           created_at?: string
+          facebook_followers?: number | null
+          facebook_username?: string | null
           full_name?: string | null
           id?: string
+          instagram_followers?: number | null
+          instagram_username?: string | null
+          is_verified?: boolean | null
+          missions_completed?: number | null
+          missions_won?: number | null
           phone?: string | null
           rating_avg?: number | null
           rating_count?: number | null
@@ -158,8 +291,12 @@ export type Database = {
           tiktok_username?: string | null
           total_earned?: number | null
           total_spent?: number | null
+          twitter_followers?: number | null
+          twitter_username?: string | null
           updated_at?: string
           user_id?: string
+          youtube_subscribers?: number | null
+          youtube_username?: string | null
         }
         Relationships: []
       }
@@ -194,6 +331,66 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "ratings_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      transactions: {
+        Row: {
+          amount: number
+          application_id: string | null
+          campaign_id: string | null
+          created_at: string
+          description: string | null
+          fee_amount: number | null
+          fee_percentage: number | null
+          from_user_id: string
+          id: string
+          status: string | null
+          to_user_id: string | null
+          transaction_type: string
+        }
+        Insert: {
+          amount: number
+          application_id?: string | null
+          campaign_id?: string | null
+          created_at?: string
+          description?: string | null
+          fee_amount?: number | null
+          fee_percentage?: number | null
+          from_user_id: string
+          id?: string
+          status?: string | null
+          to_user_id?: string | null
+          transaction_type: string
+        }
+        Update: {
+          amount?: number
+          application_id?: string | null
+          campaign_id?: string | null
+          created_at?: string
+          description?: string | null
+          fee_amount?: number | null
+          fee_percentage?: number | null
+          from_user_id?: string
+          id?: string
+          status?: string | null
+          to_user_id?: string | null
+          transaction_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transactions_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "campaign_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transactions_campaign_id_fkey"
             columns: ["campaign_id"]
             isOneToOne: false
             referencedRelation: "campaigns"
@@ -264,6 +461,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_senior_creator: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "seller" | "creator"
