@@ -195,7 +195,7 @@ const AuthCreator = () => {
               </div>
               <div>
                 <span className="text-xl font-display font-bold text-foreground block">Espace Créateur</span>
-                <span className="text-xs text-muted-foreground">CreatorHub</span>
+                <span className="text-xs text-muted-foreground">MakeTik</span>
               </div>
             </Link>
           </div>

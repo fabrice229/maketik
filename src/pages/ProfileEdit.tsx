@@ -114,7 +114,7 @@ const ProfileEdit = () => {
         title: 'Profil mis à jour',
         description: 'Vos modifications ont été enregistrées',
       });
-      navigate(`/profile/${user?.id}`);
+      navigate(`/creators/${user?.id}`);
     }
 
     setSaving(false);

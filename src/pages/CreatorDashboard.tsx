@@ -6,6 +6,7 @@ import { useWallet } from '@/hooks/useWallet';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import Logo from '@/components/ui/Logo';
 import {
   Zap,
   TrendingUp,
@@ -155,12 +156,9 @@ const CreatorDashboard = () => {
     <div className="min-h-screen bg-background">
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-full w-72 glass-strong border-r border-border/30 p-6 hidden lg:block">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-creator to-creator/80 flex items-center justify-center">
-            <Zap className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-display font-bold text-foreground">CreatorHub</span>
-        </div>
+        <Link to="/" className="flex items-center gap-3 mb-10 group">
+          <Logo size="md" className="transition-transform group-hover:scale-105" />
+        </Link>
 
         <nav className="space-y-2">
           <Link
@@ -192,7 +190,7 @@ const CreatorDashboard = () => {
             Portefeuille
           </Link>
           <Link
-            to={`/profile/${user?.id}`}
+            to={`/creators/${user?.id}`}
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-secondary transition-colors"
           >
             <Users className="w-5 h-5" />
