@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Zap, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 
 const Footer = () => {
   return (
@@ -11,11 +12,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <Zap className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-display font-bold">CreatorHub</span>
+            <Link to="/" className="inline-block mb-6 group">
+              <Logo size="md" className="transition-transform duration-300 group-hover:scale-105" />
             </Link>
             <p className="text-background/60 leading-relaxed max-w-xs mb-6">
               La plateforme qui connecte vendeurs et créateurs TikTok pour des campagnes marketing réussies.
@@ -123,7 +121,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-background/50 text-sm">
-            © 2025 CreatorHub. Tous droits réservés.
+            © 2025 MakeTik. Tous droits réservés.
           </p>
           <p className="text-background/50 text-sm">
             Fait avec ❤️ pour les créateurs africains
