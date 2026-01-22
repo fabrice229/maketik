@@ -21,6 +21,7 @@ import SeniorCreators from "./pages/SeniorCreators";
 import CreatorProfile from "./pages/CreatorProfile";
 import ProfileEdit from "./pages/ProfileEdit";
 import Messages from "./pages/Messages";
+import Wallet from "./pages/Wallet";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
@@ -68,9 +69,10 @@ const App = () => {
                   <Route path="/campaigns/:id" element={<CampaignDetail />} />
                   <Route path="/creators" element={<Creators />} />
                   <Route path="/creators/senior" element={<SeniorCreators />} />
-                  <Route path="/profile/:userId" element={<CreatorProfile />} />
+                  <Route path="/creators/:userId" element={<CreatorProfile />} />
                   <Route path="/profile/edit" element={<ProfileEdit />} />
                   <Route path="/messages" element={<Messages />} />
+                  <Route path="/wallet" element={<Wallet />} />
                   <Route path="/pricing" element={<Pricing />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

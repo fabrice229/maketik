@@ -155,7 +155,7 @@ const AuthSeller = () => {
               </div>
               <div>
                 <span className="text-xl font-display font-bold text-foreground block">Espace Vendeur</span>
-                <span className="text-xs text-muted-foreground">CreatorHub</span>
+                <span className="text-xs text-muted-foreground">MakeTik</span>
               </div>
             </Link>
           </div>
@@ -168,7 +168,7 @@ const AuthSeller = () => {
             <p className="text-muted-foreground">
               {mode === 'signin' 
                 ? 'Connectez-vous pour accéder à votre tableau de bord' 
-                : 'Rejoignez des milliers de vendeurs sur CreatorHub'}
+                : 'Rejoignez des milliers de vendeurs sur MakeTik'}
             </p>
           </div>
 
