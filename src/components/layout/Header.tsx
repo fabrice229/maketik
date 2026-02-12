@@ -19,104 +19,80 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'glass-strong shadow-glass' : 'bg-transparent'
+      scrolled ? 'bg-card/95 backdrop-blur-md shadow-card border-b border-border' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-[72px]">
           <Link to="/" className="group">
-            <Logo size="md" className="transition-transform duration-300 group-hover:scale-105" />
+            <Logo size="md" className="transition-transform duration-200 group-hover:scale-105" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
-            <Link 
-              to="/campaigns" 
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-form relative group"
-            >
-              Campagnes
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link 
-              to="/creators" 
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-form relative group"
-            >
-              Créateurs
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link 
-              to="/pricing" 
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-form relative group"
-            >
-              Tarifs
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-            </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            {[
+              { to: "/campaigns", label: "Campagnes" },
+              { to: "/creators", label: "Créateurs" },
+              { to: "/pricing", label: "Tarifs" },
+            ].map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sidebar"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Link to="/auth/seller">
-              <Button variant="ghost" size="sm" className="text-foreground hover:text-seller">
+              <Button variant="ghost" size="sm">
                 <Store className="w-4 h-4 mr-2" />
                 Vendeur
               </Button>
             </Link>
             <Link to="/auth/creator">
-              <Button size="sm" className="bg-creator hover:bg-creator/90 shadow-lg">
+              <Button size="sm">
                 <Video className="w-4 h-4 mr-2" />
                 Créateur
               </Button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2.5 rounded-xl glass transition-all duration-300 hover:scale-105"
+          <button
+            className="md:hidden p-2 rounded-[10px] border border-border bg-card transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-foreground" />
-            ) : (
-              <Menu className="w-5 h-5 text-foreground" />
-            )}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-border/30 animate-fade-in">
-            <nav className="flex flex-col gap-2">
-              <Link 
-                to="/campaigns" 
-                className="px-4 py-3.5 rounded-xl glass transition-all duration-300 text-form font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Campagnes
-              </Link>
-              <Link 
-                to="/creators" 
-                className="px-4 py-3.5 rounded-xl glass transition-all duration-300 text-form font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Créateurs
-              </Link>
-              <Link 
-                to="/pricing" 
-                className="px-4 py-3.5 rounded-xl glass transition-all duration-300 text-form font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Tarifs
-              </Link>
+          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+            <nav className="flex flex-col gap-1">
+              {[
+                { to: "/campaigns", label: "Campagnes" },
+                { to: "/creators", label: "Créateurs" },
+                { to: "/pricing", label: "Tarifs" },
+              ].map(link => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="px-4 py-3 rounded-[12px] text-sidebar font-medium hover:bg-secondary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <div className="flex gap-3 mt-4">
                 <Link to="/auth/seller" className="flex-1">
-                  <Button variant="outline" className="w-full glass">
+                  <Button variant="outline" className="w-full">
                     <Store className="w-4 h-4 mr-2" />
                     Vendeur
                   </Button>
                 </Link>
                 <Link to="/auth/creator" className="flex-1">
-                  <Button className="w-full bg-creator hover:bg-creator/90">
+                  <Button className="w-full">
                     <Video className="w-4 h-4 mr-2" />
                     Créateur
                   </Button>
