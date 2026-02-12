@@ -127,55 +127,46 @@ const SellerDashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-full w-72 glass-strong border-r border-border/30 p-6 hidden lg:block">
-        <Link to="/" className="flex items-center gap-3 mb-10 group">
-          <Logo size="md" className="transition-transform group-hover:scale-105" />
+      <aside className="fixed left-0 top-0 h-full w-[260px] bg-card border-r border-border p-6 hidden lg:flex flex-col">
+        <Link to="/" className="flex items-center gap-3 mb-8">
+          <Logo size="md" />
         </Link>
 
-        <nav className="space-y-2">
-          <Link
-            to="/dashboard/seller"
-            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-medium"
-          >
-            <BarChart3 className="w-5 h-5" />
-            Tableau de bord
-          </Link>
-          <Link
-            to="/campaigns"
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-secondary transition-colors"
-          >
-            <Megaphone className="w-5 h-5" />
-            Mes campagnes
-          </Link>
-          <Link
-            to="/creators"
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-secondary transition-colors"
-          >
-            <Users className="w-5 h-5" />
-            Créateurs
-          </Link>
-          <Link
-            to="/wallet"
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-secondary transition-colors"
-          >
-            <Wallet className="w-5 h-5" />
-            Portefeuille
-          </Link>
+        <nav className="space-y-1 flex-1">
+          {[
+            { to: "/dashboard/seller", icon: BarChart3, label: "Tableau de bord", active: true },
+            { to: "/campaigns", icon: Megaphone, label: "Mes campagnes", active: false },
+            { to: "/creators", icon: Users, label: "Créateurs", active: false },
+            { to: "/wallet", icon: Wallet, label: "Portefeuille", active: false },
+          ].map(item => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-[12px] text-sidebar transition-colors ${
+                item.active
+                  ? 'bg-primary/8 text-primary font-medium'
+                  : 'text-muted-foreground hover:bg-secondary'
+              }`}
+            >
+              <item.icon className="w-5 h-5" strokeWidth={1.5} />
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        <div className="absolute bottom-6 left-6 right-6">
+        <div className="border-t border-border pt-4">
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors w-full"
+            className="flex items-center gap-3 px-4 py-2.5 rounded-[12px] text-sidebar text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors w-full"
           >
-            <LogOut className="w-5 h-5" />
+            <LogOut className="w-5 h-5" strokeWidth={1.5} />
             Déconnexion
           </button>
         </div>
       </aside>
 
       {/* Main content */}
-      <main className="lg:ml-72 p-6 lg:p-10">
+      <main className="lg:ml-[260px] p-6 lg:p-10">
         {/* Header */}
         <header className="flex items-center justify-between mb-10">
           <div>
@@ -189,7 +180,7 @@ const SellerDashboard = () => {
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Link to="/campaigns/new">
-              <Button className="shadow-glow">
+              <Button>
                 <Plus className="w-5 h-5 mr-2" />
                 Nouvelle campagne
               </Button>

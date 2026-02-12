@@ -15,17 +15,15 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        display: ['Britti Sans', 'SF Pro Display', 'Helvetica Neue', 'sans-serif'],
       },
       fontSize: {
-        'display-xl': ['4rem', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
-        'display': ['3rem', { lineHeight: '1.15', fontWeight: '700', letterSpacing: '-0.02em' }],
-        'title': ['2rem', { lineHeight: '1.25', fontWeight: '600', letterSpacing: '-0.01em' }],
-        'subtitle': ['1.5rem', { lineHeight: '1.35', fontWeight: '500' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.7', fontWeight: '400' }],
-        'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
-        'form': ['0.9375rem', { lineHeight: '1.5', fontWeight: '500' }],
-        'caption': ['0.875rem', { lineHeight: '1.5', fontWeight: '500' }],
+        'body-lg': ['17px', { lineHeight: '1.6', fontWeight: '400', letterSpacing: '-0.03em' }],
+        'body': ['16px', { lineHeight: '1.6', fontWeight: '400', letterSpacing: '-0.03em' }],
+        'small': ['14px', { lineHeight: '1.5', fontWeight: '400', letterSpacing: '-0.02em' }],
+        'button': ['15px', { lineHeight: '1.5', fontWeight: '600', letterSpacing: '-0.01em' }],
+        'sidebar': ['14px', { lineHeight: '1.5', fontWeight: '500', letterSpacing: '-0.02em' }],
+        'caption': ['13px', { lineHeight: '1.5', fontWeight: '500' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -90,18 +88,22 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 6px)",
+        'btn': '10px',
+        'card': '16px',
+        'input': '12px',
+        'modal': '20px',
+        'sidebar-item': '12px',
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
-        'glass': 'var(--shadow-glass)',
-        'elevated': '0 0 0 1px rgb(0 0 0 / 0.03), 0 2px 4px rgb(0 0 0 / 0.03), 0 12px 24px rgb(0 0 0 / 0.03)',
-        'glow': '0 0 60px rgba(59, 130, 246, 0.15)',
-        'glow-sm': '0 0 30px rgba(59, 130, 246, 0.1)',
+        'card-hover': 'var(--shadow-card-hover)',
+        'modal': 'var(--shadow-modal)',
       },
-      backdropBlur: {
-        'glass': '20px',
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
       },
       keyframes: {
         "accordion-down": {
@@ -120,22 +122,12 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
-        "slide-in": {
-          from: { opacity: "0", transform: "translateX(-10px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
-        "pulse-soft": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.7" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out forwards",
         "fade-in": "fade-in 0.3s ease-out forwards",
-        "slide-in": "slide-in 0.4s ease-out forwards",
-        "pulse-soft": "pulse-soft 2s ease-in-out infinite",
       },
     },
   },

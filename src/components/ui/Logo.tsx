@@ -57,7 +57,7 @@ const Logo = ({ size = "md", animated = false, showText = true, className }: Log
         <motion.div
           className={cn(
             sizeClasses[size],
-            "relative rounded-xl bg-gradient-to-br from-primary via-seller to-creator flex items-center justify-center shadow-lg"
+            "relative rounded-[10px] bg-primary flex items-center justify-center"
           )}
           variants={iconVariants}
           initial="hidden"
@@ -94,7 +94,7 @@ const Logo = ({ size = "md", animated = false, showText = true, className }: Log
         <div
           className={cn(
             sizeClasses[size],
-            "relative rounded-xl bg-gradient-to-br from-primary via-seller to-creator flex items-center justify-center shadow-lg"
+            "relative rounded-[10px] bg-primary flex items-center justify-center"
           )}
         >
           <svg
